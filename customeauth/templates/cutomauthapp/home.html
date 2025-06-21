@@ -1,0 +1,15 @@
+{% extends "layouts/based.html" %} {% block content %} Home page
+<div>
+  {% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}!</p>
+  <li>Is staff: {{ user.is_staff }}</li>
+  <li>Is superuser: {{ user.is_superuser }}</li>
+  {% if user.is_superuser %}
+  <p>You are a superuser.</p>
+  {% else %}
+  <p>You are a regular user.</p>
+  {% endif %} {% else %}
+  <p>You are not logged in.</p>
+  {% endif %}
+</div>
+{% endblock %}

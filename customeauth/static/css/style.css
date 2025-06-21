@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: white !important;
+  marging: 0;
+  padding: 0;
+}
+.container {
+  background: black;
+  padding: 5px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+ul {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: white;
+}
+li {
+  list-style: none;
+}
+a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+.logo {
+  color: white;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  padding: 20px;
+  justify-content: center;
+  background: rgb(86, 142, 197);
+  width: 40%;
+  border-radius: 10px;
+}
+
+form div {
+  width: 90%;
+}
+form div p {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+input {
+  width: 80%;
+  padding: 9px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: #f0f0f0;
+  font-size: 16px;
+}
+form div button {
+  width: 100%;
+  padding: 9px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px auto;
+}
+div a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px auto;
+  text-align: center;
+  display: block;
+  width: 80%;
+}
