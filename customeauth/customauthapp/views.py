@@ -4,6 +4,7 @@ from .forms import EmailLoginForm, RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 # Create your views here.
+from django.http import HttpResponseForbidden
 
 def email_login_view(request):
     form=EmailLoginForm(request.POST or None)
@@ -35,6 +36,13 @@ def dashboard_view(request):
     return render(request,'cutomauthapp/dashboard.html')
 
 
+
+@login_required
+def dashboard_superuser(request):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("You do not have permission to access this page.")
+    
+    return render(request, 'cutomauthapp/dashboard.html')
 
 def homepage(request):
     return render(request,'cutomauthapp/home.html')
