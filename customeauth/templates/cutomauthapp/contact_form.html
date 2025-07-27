@@ -1,0 +1,13 @@
+{% extends "layouts/based.html" %} {% block content %}
+
+<form method="POST">
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-info">{{ message }}</div>
+  {% endfor %} {% endif %} {% csrf_token %}
+  <div>{{ form.as_p }}</div>
+  <div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </div>
+
+  {% endblock %}
+</form>

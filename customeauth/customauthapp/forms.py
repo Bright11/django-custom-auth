@@ -30,4 +30,22 @@ class RegisterForm(forms.ModelForm):
        if password != confirm_password:
            raise forms.ValidationError('password do not match')
        return cleaned_data
-        
+
+
+class ResetPasswordForm(forms.Form):
+    email=forms.EmailField()
+    
+    
+class NewPasswordForm(forms.Form):
+    newpassword=forms.EmailField(widget=forms.PasswordInput)
+    confirm_password=forms.EmailField(widget=forms.PasswordInput)
+    
+    
+class ContactForm(forms.Form):
+    name=forms.CharField(max_length=100)
+    email=forms.EmailField()
+    subject=forms.CharField(max_length=200)
+    message=forms.CharField(widget=forms.Textarea, max_length=500)
+    
+    
+   

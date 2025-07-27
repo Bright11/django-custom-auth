@@ -131,4 +131,14 @@ AUTH_USER_MODEL = 'customauthapp.CustomUser'
 AUTHENTICATION_BACKENDS=['customauthapp.auth_backend.EmailBackend']
 
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'chikanwazuo@gmail.com'
+EMAIL_HOST_PASSWORD = 'dwxa eswh clvq fbew'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = False
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -5,20 +5,21 @@
 }
 body {
   background: white !important;
-  marging: 0;
+  margin: 0;
   padding: 0;
 }
-.container {
+.nave_container {
   background: black;
   padding: 5px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
-ul {
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 12px;
   color: white;
 }
 li {
@@ -29,8 +30,9 @@ a {
   font-size: 18px;
   text-decoration: none;
 }
-.logo {
+.logo a {
   color: white;
+  font-size: 24px;
 }
 
 form {
@@ -38,7 +40,7 @@ form {
   align-items: center;
   flex-direction: column;
   margin: 20px auto;
-  padding: 20px;
+  padding: 10px;
   justify-content: center;
   background: rgb(86, 142, 197);
   width: 40%;
@@ -52,11 +54,12 @@ form div p {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   margin: 20px auto;
 }
-input {
-  width: 80%;
+input,
+textarea {
+  width: 90%;
   padding: 9px;
   outline: none;
   border: none;

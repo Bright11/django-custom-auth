@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import EmailLoginForm, RegisterForm
+from .forms import EmailLoginForm, RegisterForm,ResetPasswordForm,NewPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
+from django.core.mail import EmailMessage
+import uuid
+from django.contrib import messages
 # Create your views here.
 
 def email_login_view(request):
@@ -13,7 +20,11 @@ def email_login_view(request):
         user = authenticate(request, email=email, password=password)
         if user:
             login(request, user)
-            return redirect('dashboard')
+            if user.is_superuser:
+                return redirect('admindashboard')
+            else:
+                return redirect('user_dashboard')
+          
     return render(request, 'cutomauthapp/login.html', {'form':form})
 
 
@@ -26,13 +37,19 @@ def Register_view(request):
         user.set_password(form.cleaned_data['password']) #hash password
         user.save()
         login(request, user) #Auto login after registeration
-        return redirect('/')
+        if user.is_superuser:
+            return redirect('admindashboard')
+        else:
+            return redirect('user_dashboard')
+        
     context={'title':"Register page",'form':form}
     return render(request, 'cutomauthapp/register.html',context)
 
 @login_required
-def dashboard_view(request):
-    return render(request,'cutomauthapp/dashboard.html')
+def user_dashboard_view(request):
+    if request.user.is_superuser:
+        return redirect('admindashboard')
+    return render(request,'cutomauthapp/user_dashboard.html')
 
 
 
@@ -40,6 +57,18 @@ def homepage(request):
     return render(request,'cutomauthapp/home.html')
 
 
+
+
+@login_required
+def admin_dashboard_view(request):
+    if not request.user.is_superuser:
+        return redirect('user_dashboard')
+    
+    return render(request, 'cutomauthapp/dashboard.html')
+
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+

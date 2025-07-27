@@ -1,15 +1,21 @@
-<div class="container">
-  <div class="logo">Logo</div>
-  <ul>
+<div class="nave_container">
+  <div class="logo">
+    <a href="/">Logo</a>
+  </div>
+  <ul class="nav-links">
     <li><a href="/">Home</a></li>
 
     {% if user.is_authenticated %}
     <li><a href="{% url 'logout' %}">Logout</a></li>
     {% if user.is_superuser %}
-    <li><a href="">You are superuser</a></li>
+    <li><a href="{% url "admindashboard" %}">Admin</a></li>
+    {% else %}
+    <li><a href="{% url "user_dashboard" %}">Profile</a></li>
+
     {% endif %} {% else %}
     <li><a href="{% url 'login' %}">Login</a></li>
     <li><a href="{% url 'register' %}">Register</a></li>
     {% endif %}
+    <li><a href="{% url 'contact' %}">Contact Us</a></li>
   </ul>
 </div>
